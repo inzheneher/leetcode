@@ -4,7 +4,7 @@
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] a = solution.twoSum(new int[]{2, 3, 6, 9, 5}, 15);
+        int[] a = solution.twoSum(new int[]{2, 3, 6, 9, 5, 10, 5}, 15);
 
         StringBuilder output = new StringBuilder("[");
         for (int i = 0; i < a.length; i++) {

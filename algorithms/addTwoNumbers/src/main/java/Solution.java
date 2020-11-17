@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode _l = new ListNode();
@@ -13,8 +15,13 @@ class Solution {
             l2 = l2.next;
         } while (l2 != null);
 
-        int total = Integer.parseInt(val1.toString()) + Integer.parseInt(val2.toString());
-        int[] totalArray = Integer.toString(total).chars().map(t -> t - '0').toArray();
+        BigInteger total = new BigInteger(val1.reverse().toString()).add(new BigInteger(val2.reverse().toString()));
+
+        String totalString = total.toString(10);
+        int[] totalArray = new int[totalString.length()];
+        for (int i = 0; i < totalString.length(); i++) {
+            totalArray[i] = Integer.parseInt(String.valueOf(totalString.charAt(i)));
+        }
 
         _l.val = totalArray[0];
 

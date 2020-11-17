@@ -18,8 +18,8 @@ public class ListNode {
 
     public static ListNode getListNode(ArrayList<Integer> integers) {
         ListNode listNode = new ListNode();
-        listNode.val = integers.get(0);
-        for (int i = 1; i < integers.size(); i++) {
+        listNode.val = integers.get(integers.size() - 1);
+        for (int i = integers.size() - 2; i >= 0; i--) {
             listNode = new ListNode(integers.get(i), listNode);
         }
         return listNode;

@@ -1,34 +1,20 @@
-import java.math.BigInteger;
-
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode _l = new ListNode();
-        StringBuilder val1 = new StringBuilder();
-        StringBuilder val2 = new StringBuilder();
+        boolean isNext = false;
 
-        do {
-            val1.append(l1.val);
-            l1 = l1.next;
-        } while (l1 != null);
-        do {
-            val2.append(l2.val);
-            l2 = l2.next;
-        } while (l2 != null);
+        while (l1 != null || l2 != null) {
+            int a = l1 != null ? l1.val : 0;
+            int b = l2 != null ? l2.val : 0;
+            if (isNext) _l.val = (a + b) % 10 + 1;
+            else _l.val = (a + b) % 10;
+            isNext = (a + b) > 9;
 
-        BigInteger total = new BigInteger(val1.reverse().toString()).add(new BigInteger(val2.reverse().toString()));
-
-        String totalString = total.toString(10);
-        int[] totalArray = new int[totalString.length()];
-        for (int i = 0; i < totalString.length(); i++) {
-            totalArray[i] = Integer.parseInt(String.valueOf(totalString.charAt(i)));
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+            _l = new ListNode(_l.val, _l);
         }
 
-        _l.val = totalArray[0];
-
-        for (int i = 1; i < totalArray.length; i++) {
-            _l = new ListNode(totalArray[i], _l);
-        }
-
-        return _l;
+        return _l.next;
     }
 }

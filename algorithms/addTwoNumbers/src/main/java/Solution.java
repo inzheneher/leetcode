@@ -1,20 +1,22 @@
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode _l = new ListNode();
-        boolean isNext = false;
+        ListNode head = new ListNode(), pointer = head;
+        int decimalPart = 0;
 
         while (l1 != null || l2 != null) {
             int a = l1 != null ? l1.val : 0;
             int b = l2 != null ? l2.val : 0;
-            if (isNext) _l.val = (a + b) % 10 + 1;
-            else _l.val = (a + b) % 10;
-            isNext = (a + b) > 9;
-
+            int sum = a + b + decimalPart;
+            decimalPart = sum / 10;
+            pointer.next = new ListNode(sum % 10);
+            pointer = pointer.next;
             if (l1 != null) l1 = l1.next;
             if (l2 != null) l2 = l2.next;
-            _l = new ListNode(_l.val, _l);
+        }
+        if (decimalPart > 0) {
+            pointer.next = new ListNode(decimalPart);
         }
 
-        return _l.next;
+        return head.next;
     }
 }

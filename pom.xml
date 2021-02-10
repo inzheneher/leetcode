@@ -50,6 +50,7 @@
 
     <modules>
         <module>algorithms</module>
+        <module>problems</module>
     </modules>
 
 

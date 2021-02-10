@@ -19,4 +19,14 @@ class Solution {
 
         return head.next;
     }
+
+    // new ListNode(l1.val + l2.val)
+    //
+
+    public ListNode experimentalMethod(ListNode l1, ListNode l2) {
+        ListNode _l1 = l1 != null ? l1.next : new ListNode(0);
+        ListNode _l2 = l2 != null ? l2.next : new ListNode(0);
+        experimentalMethod(_l1.next, _l2.next);
+        return null;
+    }
 }

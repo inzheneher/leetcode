@@ -18,6 +18,7 @@
         <module>defangingAnIPAddress</module>
         <module>goalParserInterpretation</module>
         <module>pascalTriangle</module>
+        <module>validParentheses</module>
     </modules>
 
 

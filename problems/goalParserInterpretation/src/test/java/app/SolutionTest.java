@@ -20,5 +20,9 @@ public class SolutionTest {
     @Test
     public void interpret() {
         assertEquals("Goal", solution.interpret("G()(al)"));
+        assertEquals("aloG", solution.interpret("(al)()G"));
+        assertEquals("oGal", solution.interpret("()G(al)"));
+        assertEquals("Goooooooal", solution.interpret("G()()()()()()()(al)"));
+        assertEquals("GGGalGoGo", solution.interpret("GGG(al)G()G()"));
     }
 }

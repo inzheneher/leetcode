@@ -1,16 +1,21 @@
 package app;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * inzheneher created on 02/03/2021 inside the package - app
  */
 public class Solution {
     public int distributeCandies(int[] candyType) {
-        Set<Integer> setFromArray = new HashSet<>();
-        for (int item : candyType) setFromArray.add(item);
-        return Math.min(setFromArray.size(), candyType.length / 2);
+        boolean[] candyTypes = new boolean[200001];
+        int arrSize = candyType.length / 2;
+        int counter = 0;
+        for (int item : candyType) {
+            int t = item + 100000;
+            if (!candyTypes[t]) {
+                if (++counter >= arrSize) return arrSize;
+                candyTypes[t] = true;
+            }
+        }
+        return counter;
     }
 
     public static void main(String[] args) {

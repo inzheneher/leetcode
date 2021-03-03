@@ -10,6 +10,9 @@ package app;
  */
 public class Solution {
     public int missingNumber(int[] nums) {
+        boolean[] numPresence = new boolean[nums.length + 1];
+        for (int num : nums) if (!numPresence[num]) numPresence[num] = true;
+        for (int i = 0; i < numPresence.length; i++) if (!numPresence[i]) return i;
         return -1;
     }
 

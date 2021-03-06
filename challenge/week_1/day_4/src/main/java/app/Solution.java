@@ -32,6 +32,7 @@ public class Solution {
         return currentNode;
     }
 
+    //TODO: fix creating ListNodes to make them intersected
     public static void main(String[] args) {
         Solution solution = new Solution();
         ListNode head1 = solution.getHeadOfLinkedListFromArray(new int[]{4,1,8,4,5});

@@ -8,21 +8,17 @@ public class Solution {
         if (head == null) return null;
         ListNode currentNode = head;
         ListNode beforeDelNode = head;
-        int counter = 1;
+        int counter = 0;
+        while (counter <= n) {
+            if (currentNode != null) currentNode = currentNode.next;
+            else return head.next;
+            counter++;
+        }
         while (currentNode != null) {
             currentNode = currentNode.next;
-            if (currentNode != null) {
-                if (counter >= n + 1) beforeDelNode = beforeDelNode.next;
-                counter++;
-            }
+            beforeDelNode = beforeDelNode.next;
         }
-        if (counter == 1) head = null;
-        else if (counter == 2) {
-            if (n == 1) head.next = null;
-            else head = head.next;
-        } else if (counter == n) head = head.next;
-        else beforeDelNode.next = beforeDelNode.next.next;
-
+        beforeDelNode.next = beforeDelNode.next.next;
         return head;
     }
 
@@ -37,6 +33,6 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        solution.removeNthFromEnd(solution.getHead(new int[]{1, 2, 3, 4, 5}), 2);
+        solution.removeNthFromEnd(solution.getHead(new int[]{1, 2}), 1);
     }
 }

@@ -1,25 +1,27 @@
 package app;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * inzheneher created on 07/03/2021 inside the package - app
  */
 public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        if (head == null) return head;
-        ListNode result = head;
-        List<ListNode> list = new ArrayList<>();
-        while (result != null) {
-            list.add(result);
-            result = result.next;
+        if (head == null) return null;
+        ListNode currentNode = head;
+        ListNode beforeDelNode = head;
+        int counter = 1;
+        while (currentNode != null) {
+            currentNode = currentNode.next;
+            if (currentNode != null) {
+                if (counter >= n + 1) beforeDelNode = beforeDelNode.next;
+                counter++;
+            }
         }
-        int size = list.size();
-        if (size == 1 && n == 1) head = null;
-        else if (size == n) head = list.get(1);
-        else if (n == 1) list.get(size - n - 1).next = null;
-        else list.get(size - n - 1).next = list.get(size - n + 1);
+        if (counter == 1) head = null;
+        else if (counter == 2) {
+            if (n == 1) head.next = null;
+            else head = head.next;
+        } else if (counter == n) head = head.next;
+        else beforeDelNode.next = beforeDelNode.next.next;
 
         return head;
     }

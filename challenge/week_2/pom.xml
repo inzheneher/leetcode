@@ -9,16 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>week_1</artifactId>
+    <artifactId>week_2</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>day_1</module>
-        <module>day_2</module>
-        <module>day_3</module>
-        <module>day_4</module>
-        <module>day_5</module>
-        <module>day_6</module>
-        <module>day_7</module>
+        <module>day_8</module>
     </modules>
 
     <properties>
